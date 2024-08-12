@@ -13,7 +13,7 @@ class Person extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        'ci', 'paterno', 'materno', 'nombre'
+        'ci', 'paterno', 'materno', 'nombre', 'id_user'
     ];
 
 }
