@@ -26,7 +26,8 @@ class IndexController extends Controller
         return view('frontend.data', $data);
     }
     public function getPersons(){
-        $persons = Person::all();
+        // $persons = Person::all();
+        $persons = Person::orderBy('id', 'asc')->get();
         return view('frontend.person.persons', ['persons' => $persons]);
     }
     public function getPerson($id_person){
@@ -42,6 +43,28 @@ class IndexController extends Controller
         $person->materno = $request->materno;
 
         $person->save();
+
+        return redirect('/persons');
+    }
+    public function update($id_person){
+        $person = Person::find($id_person);
+        return view('frontend.person.update',['person' => $person]);
+    }
+    public function updatePersonById(Request $request, $id_person){
+        $person = Person::find($id_person);
+        $person->ci = $request->ci;
+        $person->nombre = $request->nombre;
+        $person->materno = $request->materno;
+        $person->paterno = $request->paterno;
+
+        $person->save();
+        return redirect('/persons');
+        // return redirect("/persons/{$person->id}/edit");
+
+    }
+    public function deletePersonById($id_person){
+        $person = Person::find($id_person);
+        $person->delete();
 
         return redirect('/persons');
     }

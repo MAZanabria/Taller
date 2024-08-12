@@ -7,23 +7,24 @@
     <title>Create</title>
 </head>
 <body>
-    <h1>Create a new Person:</h1>
-    <form action="/person" method="POST">
+    <h1>Uptade the person {{$person->nombre}}:</h1>
+    <form action="/person/{{$person->id}}" method="POST">
         @csrf
+        @method('PUT')
         <label for="ci">
             CI:
-            <input type="text" name="ci">
+            <input type="text" name="ci" value="{{$person->ci}}">
         <label for="nombre">
             Name:
-            <input type="text" name="nombre">
+            <input type="text" name="nombre" value="{{$person->nombre}}">
         </label>
         <label for="paterno">
             First Name:
-            <input type="text" name="paterno">
+            <input type="text" name="paterno" value="{{$person->paterno}}">
         </label>
         <label for="materno">
             Last Name:
-            <input type="text" name="materno">
+            <input type="text" name="materno" value="{{$person->materno}}">
         </label>
 
         <button  type="submit">Submit</button>

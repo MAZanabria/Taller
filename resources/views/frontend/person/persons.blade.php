@@ -13,6 +13,7 @@
             <th>Paterno</th>
             <th>Materno</th>
             <th>Nombre</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,18 @@
                 <td>{{ $person->materno }}</td>
                 <td>{{ $person->nombre }}</td>
                 <td><a href="persons/{{$person->id}}">View</a></td>
+                <td><a href="persons/{{$person->id}}/edit">Edit</a></td>
+                <td>
+                    <form action="/persons/{{$person->id}}/delete" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit">
+                            delete
+                        </button>
+                        
+                    </form>
+                </td>
             </tr>
         @endforeach
     </tbody>

@@ -25,5 +25,9 @@ Route::get('persons/{id_person}', [IndexController::class, 'getPerson']);
 Route::get('person/create', [IndexController::class, 'create']);
 Route::post('person', [IndexController::class, 'addPerson']);
 
+//update
+Route::get('persons/{id_person}/edit', [IndexController::class,'update']);
+Route::put('person/{id_person}',[IndexController::class,'updatePersonByID']);
 
-
+//delete
+Route::delete('persons/{id_person}/delete',[IndexController::class,'deletePersonById']);
