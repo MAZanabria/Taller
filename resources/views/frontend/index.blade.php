@@ -3,6 +3,11 @@
 
 @section('content')
 <body>
-    <h1>Hello, from my View using laravel</h1>
+    <div class="content">
+        <h1>Hello, from my View using laravel</h1>
+        <a href="/persons">
+            <button>Go to list of persons</button>
+        </a>
+    </div>
 </body>
 @endsection

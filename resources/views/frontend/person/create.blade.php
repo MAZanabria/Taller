@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create</title>
-</head>
+@extends('layouts.layout1')
+@section('title', 'Create')
+
+@section('content')
 <body>
     <h1>Create a new Person:</h1>
-    <form action="/person" method="POST">
+    <form action="/person" method="POST" class="form-data">
         @csrf
         <label for="ci">
             CI:
@@ -30,4 +26,4 @@
     </form>
 
 </body>
-</html>
+@endsection
