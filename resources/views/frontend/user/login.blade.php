@@ -2,6 +2,7 @@
 @section('title', 'Create')
 
 @section('content')
+
 <body>
     <h1>Login as a person:</h1>
     <form action="/authenticate" method="POST" class="form-data">
@@ -10,9 +11,9 @@
             Name:
             <input type="text" name="name">
         </label>
-        <label for="Password">
+        <label for="password">
             Password:
-            <input type="text" name="password">
+            <input type="password" name="password">
         </label>
         <label for="id_person">
             Id de la persona con la que desea ingresar:

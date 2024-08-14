@@ -2,14 +2,19 @@
 @section('title', 'Listo of persons')
 
 @section('content')
-
+@php
+    $user = Session::get('data_session');
+@endphp
+    <H1>User: {{$user->name}}</H1>
     <body>
         <div class="content">
             <div class="title">
                 <h1>Data of persons</h1>
                 <a href="/person/create"><button>New person</button></a>
             </div>
-
+            <div>
+                <a href="/logout">Logout</a>
+            </div>
             <table border="3" class="">
                 <thead>
                     <tr>

@@ -5,21 +5,28 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Person;
 use App\Models\User;
+// use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function authenticate(Request $request)
     {
-        $person = Person::findOrFail($request->id_person);
+        $user = User::where('name', $request->name)->first();
 
-        if ($person->nombre !=  $request->name) {
-            return 'Error to find the person';
-        } else {
-
-            $persons = Person::orderBy('id', 'asc')->get();
-            return view('frontend.person.persons', ['persons' => $persons]);
+        if (!$user) {
+            return 'Error: Usuario no encontrado';
         }
+        if ($request->name !=  $user->name && $request->password != $user->password) {
+            return 'Error of data login';
+        }
+        Session::put('data_session', $user);
+        return redirect('/persons');
+    }
+    public function logout(){
+        Session::forget('data_session');
+        return redirect('/login');
     }
     public function add(Request $request)
     {
